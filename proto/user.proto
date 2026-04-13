@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "./";
+
+message LoginReq {
+  string name = 1;
+  string password = 2;
+}
+
+message LoginResp {
+  string msg = 1;
+  int32 code = 2;
+}
+message RegisterReq {
+  string name = 1;
+  string password = 2;
+}
+
+message RegisterResp {
+  string msg = 1;
+  int32 code = 2;
+}
+message OrderAddReq {
+  string name = 1;
+  string Address = 2;
+  int32 num = 3;
+}
+
+message OrderAddResp {
+  string msg = 1;
+  int32 code = 2;
+}
+message GwcAddReq {
+  string name = 1;
+  int32 num = 3;
+}
+
+message GwcAddResp {
+  string msg = 1;
+  int32 code = 2;
+}
+message OrderListReq {
+  int32 id = 1;
+}
+message OrderList{
+  string name = 1;
+  string Address = 2;
+  int32 num = 3;
+}
+message OrderListResp {
+  string msg = 1;
+  int32 code = 2;
+  repeated OrderList list = 3;
+}
+service StreamGreeter {
+  rpc Login(LoginReq) returns (LoginResp);
+  rpc Register(RegisterReq) returns (RegisterResp);
+  rpc OrderAdd(OrderAddReq) returns (OrderAddResp);
+  rpc OrderList(OrderListReq) returns (OrderListResp);
+  rpc GwcAdd(GwcAddReq) returns (GwcAddResp);
+}
